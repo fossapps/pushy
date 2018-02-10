@@ -3,13 +3,13 @@
 package pushy
 
 import (
-	"net/http"
-	"time"
-	"encoding/json"
 	"bytes"
-	"fmt"
+	"encoding/json"
 	"errors"
+	"fmt"
+	"net/http"
 	"strconv"
+	"time"
 )
 
 // Create is a helper method to initialize a simple Pushy struct

@@ -1,11 +1,11 @@
 package pushy_test
 
 import (
-	"pushy"
 	"fmt"
 	"gopkg.in/jarcoal/httpmock.v1"
-	"time"
 	"net/http"
+	"pushy"
+	"time"
 )
 
 func ExampleGetDefaultAPIEndpoint() {

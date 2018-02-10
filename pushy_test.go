@@ -1,20 +1,21 @@
 package pushy_test
 
 import (
-	"testing"
-	"pushy"
-	"time"
-	"gopkg.in/jarcoal/httpmock.v1"
+	"errors"
 	"fmt"
 	"github.com/stretchr/testify/assert"
+	"gopkg.in/jarcoal/httpmock.v1"
 	"net/http"
-	"errors"
+	"pushy"
+	"testing"
+	"time"
 )
 
 type endpoint struct {
 	method string
 	url    string
 }
+
 // region SDK related settings
 func TestCreate(t *testing.T) {
 	table := []struct {
@@ -358,6 +359,7 @@ func TestPushy_NotifyDevice(t *testing.T) {
 	Assert.Equal(true, status.Success)
 	Assert.Equal("some_id", status.ID)
 }
+
 // endregion
 
 func getEndpointsDefinitions() []endpoint {
