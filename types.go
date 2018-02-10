@@ -1,8 +1,8 @@
 package pushy
 
 import (
-	"net/http"
 	"io"
+	"net/http"
 )
 
 // Pushy is a basic struct with two configs: ApiToken and ApiEndpoint
@@ -27,8 +27,8 @@ type Device struct {
 type DeviceInfo struct {
 	Device        Device   `json:"device"`
 	Subscriptions []string `json:"subscriptions"`
-	Presence struct {
-		Online bool `json:"online"`
+	Presence      struct {
+		Online     bool `json:"online"`
 		LastActive struct {
 			Date       int `json:"date"`
 			SecondsAgo int `json:"seconds_ago"`
@@ -73,8 +73,8 @@ type SimpleSuccess struct {
 
 // DeviceSubscriptionRequest is representation of a request we send for subscribing a new device to topic
 type DeviceSubscriptionRequest struct {
-	Token  string    `json:"token"`
-	Topics [] string `json:"topics"`
+	Token  string   `json:"token"`
+	Topics []string `json:"topics"`
 }
 
 // SendNotificationRequest is representation of data to be sent to pushy service to create new notification
