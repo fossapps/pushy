@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gopkg.in/jarcoal/httpmock.v1"
 	"net/http"
-	"pushy"
+	"github.com/cyberhck/pushy"
 	"time"
 )
 
