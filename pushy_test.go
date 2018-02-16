@@ -3,12 +3,13 @@ package pushy_test
 import (
 	"errors"
 	"fmt"
-	"github.com/cyberhck/pushy"
-	"github.com/stretchr/testify/assert"
-	"gopkg.in/jarcoal/httpmock.v1"
 	"net/http"
 	"testing"
 	"time"
+
+	"github.com/cyberhck/pushy"
+	"github.com/stretchr/testify/assert"
+	"gopkg.in/jarcoal/httpmock.v1"
 )
 
 type endpoint struct {
