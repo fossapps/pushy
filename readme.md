@@ -14,6 +14,12 @@ Usage:
 ```go
 sdk := pushy.Create("API_TOKEN", pushy.GetDefaultAPIEndpoint())
 sdk.SetHTTPClient(pushy.GetDefaultHTTPClient(10 * time.Second))
-res, _, _ := sdk.DeviceInfo("DEVICE_ID")
+res, requestErr, networkErr := sdk.DeviceInfo("DEVICE_ID")
+if networkErr != nil {
+  log.Println(networkErr)
+}
+if requestErr != nil {
+  log.Println(requestErr)
+}
 log.Println(res)
 ```
