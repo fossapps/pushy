@@ -2,9 +2,9 @@ package pushy_test
 
 import (
 	"fmt"
+	"github.com/cyberhck/pushy"
 	"gopkg.in/jarcoal/httpmock.v1"
 	"net/http"
-	"github.com/cyberhck/pushy"
 	"time"
 )
 

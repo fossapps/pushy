@@ -3,10 +3,10 @@ package pushy_test
 import (
 	"errors"
 	"fmt"
+	"github.com/cyberhck/pushy"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/jarcoal/httpmock.v1"
 	"net/http"
-	"github.com/cyberhck/pushy"
 	"testing"
 	"time"
 )
