@@ -133,8 +133,7 @@ func get(client IHTTPClient, url string, positiveResponse interface{}, errRespon
 	}
 	// decode positiveResponse
 	errResponse = nil
-	json.NewDecoder(body).Decode(positiveResponse)
-	return nil
+	return json.NewDecoder(body).Decode(positiveResponse)
 }
 
 func post(client IHTTPClient, url string, body interface{}, posRes interface{}, errRes interface{}) error {
@@ -142,20 +141,15 @@ func post(client IHTTPClient, url string, body interface{}, posRes interface{}, 
 	json.NewEncoder(buffer).Encode(body)
 	response, err := client.Post(url, "application/json", buffer)
 	if err != nil {
-		posRes = nil
-		errRes = nil
 		return err
 	}
 	defer response.Body.Close()
 	b := response.Body
 	if response.StatusCode >= 400 {
-		posRes = nil
 		json.NewDecoder(b).Decode(&errRes)
 		return errors.New(strconv.Itoa(response.StatusCode) + " " + response.Status)
 	}
-	errRes = nil
-	json.NewDecoder(b).Decode(posRes)
-	return nil
+	return json.NewDecoder(b).Decode(posRes)
 }
 
 func del(client IHTTPClient, url string, posRes interface{}, errRes interface{}) error {
@@ -173,6 +167,5 @@ func del(client IHTTPClient, url string, posRes interface{}, errRes interface{})
 		json.NewDecoder(b).Decode(&errRes)
 		return errors.New(strconv.Itoa(response.StatusCode) + " " + response.Status)
 	}
-	json.NewDecoder(b).Decode(posRes)
-	return nil
+	return json.NewDecoder(b).Decode(posRes)
 }

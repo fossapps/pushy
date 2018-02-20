@@ -41,7 +41,7 @@ type DeviceInfo struct {
 type Notification struct {
 	ID      string `json:"id"`
 	Date    int    `json:"date"`
-	Payload string `json:"payload"`
+	Payload interface{} `json:"payload"`
 }
 
 // DevicePresenceResponse is representation of device presence response from pushy
