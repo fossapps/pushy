@@ -165,18 +165,14 @@ func del(client IHTTPClient, url string, posRes interface{}, errRes interface{})
 	}
 	response, err := client.Do(req)
 	if err != nil {
-		posRes = nil
-		errRes = nil
 		return err
 	}
 	defer response.Body.Close()
 	b := response.Body
 	if response.StatusCode >= 400 {
-		posRes = nil
 		json.NewDecoder(b).Decode(&errRes)
 		return errors.New(strconv.Itoa(response.StatusCode) + " " + response.Status)
 	}
-	errRes = nil
 	json.NewDecoder(b).Decode(posRes)
 	return nil
 }
