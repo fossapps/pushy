@@ -8,7 +8,6 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"strconv"
 	"time"
 )
 
@@ -48,7 +47,7 @@ func (p *Pushy) GetHTTPClient() IHTTPClient {
 
 // DeviceInfo returns information about a particular device
 func (p Pushy) DeviceInfo(deviceID string) (*DeviceInfo, *Error, error) {
-	url := p.APIEndpoint + "/devices/" + deviceID + "?api_key=" + p.APIToken
+	url := fmt.Sprintf("%s/devices/%s?api_key=%s", p.APIEndpoint, deviceID, p.APIToken)
 	var errResponse *Error
 	var info *DeviceInfo
 	err := get(p.httpClient, url, &info, &errResponse)
@@ -57,7 +56,7 @@ func (p Pushy) DeviceInfo(deviceID string) (*DeviceInfo, *Error, error) {
 
 // DevicePresence returns data about presence of a data
 func (p *Pushy) DevicePresence(deviceID ...string) (*DevicePresenceResponse, *Error, error) {
-	url := p.APIEndpoint + "/devices/presence?api_key=" + p.APIToken
+	url := fmt.Sprintf("%s/devices/presence?api_key=%s", p.APIEndpoint, p.APIToken)
 	var devicePresenceResponse *DevicePresenceResponse
 	var pushyErr *Error
 	err := post(p.httpClient, url, DevicePresenceRequest{Tokens: deviceID}, &devicePresenceResponse, &pushyErr)
@@ -66,7 +65,7 @@ func (p *Pushy) DevicePresence(deviceID ...string) (*DevicePresenceResponse, *Er
 
 // NotificationStatus returns status of a particular notification
 func (p *Pushy) NotificationStatus(pushID string) (*NotificationStatus, *Error, error) {
-	url := fmt.Sprintf(p.APIEndpoint+"/pushes/%s?api_key=%s", pushID, p.APIToken)
+	url := fmt.Sprintf("%s/pushes/%s?api_key=%s", p.APIEndpoint, pushID, p.APIToken)
 	var errResponse *Error
 	var status *NotificationStatus
 	err := get(p.httpClient, url, &status, &errResponse)
@@ -75,7 +74,7 @@ func (p *Pushy) NotificationStatus(pushID string) (*NotificationStatus, *Error, 
 
 // DeleteNotification deletes a created notification
 func (p *Pushy) DeleteNotification(pushID string) (*SimpleSuccess, *Error, error) {
-	url := fmt.Sprintf(p.APIEndpoint+"/pushes/%s?api_key=%s", pushID, p.APIToken)
+	url := fmt.Sprintf("%s/pushes/%s?api_key=%s", p.APIEndpoint, pushID, p.APIToken)
 	var success *SimpleSuccess
 	var pushyErr *Error
 	err := del(p.httpClient, url, &success, &pushyErr)
@@ -84,7 +83,7 @@ func (p *Pushy) DeleteNotification(pushID string) (*SimpleSuccess, *Error, error
 
 // SubscribeToTopic subscribes a particular device to topics (when you want to do from backend)
 func (p *Pushy) SubscribeToTopic(deviceID string, topics ...string) (*SimpleSuccess, *Error, error) {
-	url := fmt.Sprintf(p.APIEndpoint+"/devices/subscribe?api_key=%s", p.APIToken)
+	url := fmt.Sprintf("%s/devices/subscribe?api_key=%s", p.APIEndpoint, p.APIToken)
 	request := DeviceSubscriptionRequest{
 		Token:  deviceID,
 		Topics: topics,
@@ -97,7 +96,7 @@ func (p *Pushy) SubscribeToTopic(deviceID string, topics ...string) (*SimpleSucc
 
 // UnsubscribeFromTopic un subscribes a particular device from topics (when you want to do from backend)
 func (p *Pushy) UnsubscribeFromTopic(token string, topics ...string) (*SimpleSuccess, *Error, error) {
-	url := fmt.Sprintf(p.APIEndpoint+"/devices/unsubscribe?api_key=%s", p.APIToken)
+	url := fmt.Sprintf("%s/devices/unsubscribe?api_key=%s", p.APIEndpoint, p.APIToken)
 	request := DeviceSubscriptionRequest{
 		Token:  token,
 		Topics: topics,
@@ -110,7 +109,7 @@ func (p *Pushy) UnsubscribeFromTopic(token string, topics ...string) (*SimpleSuc
 
 // NotifyDevice sends notification data to devices
 func (p *Pushy) NotifyDevice(request SendNotificationRequest) (*NotificationResponse, *Error, error) {
-	url := fmt.Sprintf(p.APIEndpoint+"/push?api_key=%s", p.APIToken)
+	url := fmt.Sprintf("%s/push?api_key=%s", p.APIEndpoint, p.APIToken)
 	var success *NotificationResponse
 	var pushyErr *Error
 	err := post(p.httpClient, url, request, &success, &pushyErr)
@@ -129,7 +128,7 @@ func get(client IHTTPClient, url string, positiveResponse interface{}, errRespon
 	if response.StatusCode >= 400 {
 		positiveResponse = nil
 		json.NewDecoder(body).Decode(&errResponse)
-		return errors.New(strconv.Itoa(response.StatusCode) + " " + response.Status)
+		return errors.New(fmt.Sprintf("%d %s", response.StatusCode, response.Status))
 	}
 	// decode positiveResponse
 	errResponse = nil
@@ -147,7 +146,7 @@ func post(client IHTTPClient, url string, body interface{}, posRes interface{}, 
 	b := response.Body
 	if response.StatusCode >= 400 {
 		json.NewDecoder(b).Decode(&errRes)
-		return errors.New(strconv.Itoa(response.StatusCode) + " " + response.Status)
+		return errors.New(fmt.Sprintf("%d %s", response.StatusCode, response.Status))
 	}
 	return json.NewDecoder(b).Decode(posRes)
 }
@@ -165,7 +164,7 @@ func del(client IHTTPClient, url string, posRes interface{}, errRes interface{})
 	b := response.Body
 	if response.StatusCode >= 400 {
 		json.NewDecoder(b).Decode(&errRes)
-		return errors.New(strconv.Itoa(response.StatusCode) + " " + response.Status)
+		return errors.New(fmt.Sprintf("%d %s", response.StatusCode, response.Status))
 	}
 	return json.NewDecoder(b).Decode(posRes)
 }
