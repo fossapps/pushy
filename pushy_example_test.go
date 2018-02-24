@@ -103,14 +103,14 @@ func setupNotificationStatusStuff() func() {
 }
 func setupSubscribeToTopicStuff() func() {
 	httpmock.Activate()
-	expectedResponse := `{"success": "true"}`
+	expectedResponse := `{"success": true}`
 	endpoint := "https://api.pushy.me/devices/subscribe?api_key=API_TOKEN"
 	httpmock.RegisterResponder("POST", endpoint, httpmock.NewStringResponder(http.StatusOK, expectedResponse))
 	return httpmock.DeactivateAndReset
 }
 func setupUnSubscribeFromTopicStuff() func() {
 	httpmock.Activate()
-	expectedResponse := `{"success": "true"}`
+	expectedResponse := `{"success": true}`
 	endpoint := "https://api.pushy.me/devices/unsubscribe?api_key=API_TOKEN"
 	httpmock.RegisterResponder("POST", endpoint, httpmock.NewStringResponder(http.StatusOK, expectedResponse))
 	return httpmock.DeactivateAndReset
