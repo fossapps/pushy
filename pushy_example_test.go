@@ -191,7 +191,7 @@ func ExamplePushy_SubscribeToTopic() {
 	sdk.SetHTTPClient(pushy.GetDefaultHTTPClient(10 * time.Millisecond))
 	subscription, _, _ := sdk.SubscribeToTopic("DEVICE_ID", "TOPIC")
 	fmt.Println(subscription.Success)
-	// Output
+	// Output:
 	// true
 }
 
@@ -202,6 +202,6 @@ func ExamplePushy_UnsubscribeFromTopic() {
 	sdk.SetHTTPClient(pushy.GetDefaultHTTPClient(10 * time.Millisecond))
 	subscription, _, _ := sdk.UnsubscribeFromTopic("DEVICE_ID", "TOPIC")
 	fmt.Println(subscription.Success)
-	// Output
+	// Output:
 	// true
 }
