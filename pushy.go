@@ -12,7 +12,7 @@ import (
 )
 
 // Create is a helper method to initialize a simple Pushy struct
-//  &Pushy{ApiToken: "token", ApiEndpoint: "https://api.pushy.me"}
+//  &Pushy{APIToken: "token", APIEndpoint: "https://api.pushy.me"}
 // can be used
 func Create(APIToken string, APIEndpoint string) *Pushy {
 	return &Pushy{
