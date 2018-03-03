@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// Pushy is a basic struct with two configs: ApiToken and ApiEndpoint
+// Pushy is a basic struct with two configs: APIToken and APIEndpoint
 type Pushy struct {
 	APIToken    string
 	APIEndpoint string
