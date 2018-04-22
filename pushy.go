@@ -14,7 +14,7 @@ import (
 // Create is a helper method to initialize a simple Pushy struct
 //  &Pushy{APIToken: "token", APIEndpoint: "https://api.pushy.me"}
 // can be used
-func Create(APIToken string, APIEndpoint string) IPushyClient {
+func Create(APIToken string, APIEndpoint string) *Pushy {
 	return &Pushy{
 		APIToken:    APIToken,
 		APIEndpoint: APIEndpoint,

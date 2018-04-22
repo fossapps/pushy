@@ -7,6 +7,8 @@ import (
 
 // IPushyClient interface to implement to qualify as a Pushy Client
 type IPushyClient interface {
+	SetHTTPClient(client IHTTPClient)
+	GetHTTPClient() IHTTPClient
 	DeviceInfo(deviceID string) (*DeviceInfo, *Error, error)
 	DevicePresence(deviceID ...string) (*DevicePresenceResponse, *Error, error)
 	NotificationStatus(pushID string) (*NotificationStatus, *Error, error)
