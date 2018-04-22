@@ -5,7 +5,19 @@ import (
 	"net/http"
 )
 
+// IPushyClient interface to implement to qualify as a Pushy Client
+type IPushyClient interface {
+	DeviceInfo(deviceID string) (*DeviceInfo, *Error, error)
+	DevicePresence(deviceID ...string) (*DevicePresenceResponse, *Error, error)
+	NotificationStatus(pushID string) (*NotificationStatus, *Error, error)
+	DeleteNotification(pushID string) (*SimpleSuccess, *Error, error)
+	SubscribeToTopic(deviceID string, topics ...string) (*SimpleSuccess, *Error, error)
+	UnsubscribeFromTopic(token string, topics ...string) (*SimpleSuccess, *Error, error)
+	NotifyDevice(request SendNotificationRequest) (*NotificationResponse, *Error, error)
+}
+
 // Pushy is a basic struct with two configs: APIToken and APIEndpoint
+// implements IPushyClient interface
 type Pushy struct {
 	APIToken    string
 	APIEndpoint string
