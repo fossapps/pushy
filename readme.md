@@ -1,25 +1,35 @@
 ### Pushy.me strongly typed SDK for golang
 <p align="center"><img src="./.github/gopher.png" width="200" /></p>
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/cyberhck/pushy)](https://goreportcard.com/report/github.com/cyberhck/pushy)[![Build Status](https://travis-ci.org/cyberhck/pushy.svg?branch=master)](https://travis-ci.org/cyberhck/pushy)[![codecov](https://codecov.io/gh/cyberhck/pushy/branch/master/graph/badge.svg)](https://codecov.io/gh/cyberhck/pushy)[![](https://godoc.org/github.com/cyberhck/pushy?status.svg)](http://godoc.org/github.com/cyberhck/pushy)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fossapps/pushy)](https://goreportcard.com/report/github.com/fossapps/pushy)[![Build Status](https://travis-ci.org/fossapps/pushy.svg?branch=master)](https://travis-ci.org/fossapps/pushy)[![codecov](https://codecov.io/gh/fossapps/pushy/branch/master/graph/badge.svg)](https://codecov.io/gh/fossapps/pushy)[![](https://godoc.org/github.com/fossapps/pushy?status.svg)](http://godoc.org/github.com/fossapps/pushy)
 
 Visit godoc for documentation
 
 ## Installation
 ```
-go get github.com/cyberhck/pushy
+go get github.com/fossapps/pushy
 ```
 
 Usage:
 ```go
-sdk := pushy.Create("API_TOKEN", pushy.GetDefaultAPIEndpoint())
-sdk.SetHTTPClient(pushy.GetDefaultHTTPClient(10 * time.Second))
-res, requestErr, networkErr := sdk.DeviceInfo("DEVICE_ID")
-if networkErr != nil {
-  log.Println(networkErr)
+package main
+
+import (
+	"github.com/fossapps/pushy"
+	"log"
+	"time"
+)
+
+func main() {
+	sdk := pushy.Create("API_TOKEN", pushy.GetDefaultAPIEndpoint())
+	sdk.SetHTTPClient(pushy.GetDefaultHTTPClient(10 * time.Second))
+	res, requestErr, networkErr := sdk.DeviceInfo("DEVICE_ID")
+	if networkErr != nil {
+	  log.Println(networkErr)
+	}
+	if requestErr != nil {
+	  log.Println(requestErr)
+	}
+	log.Println(res)
 }
-if requestErr != nil {
-  log.Println(requestErr)
-}
-log.Println(res)
 ```
