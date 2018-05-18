@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cyberhck/pushy"
+	"github.com/fossapps/pushy"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/jarcoal/httpmock.v1"
 )
@@ -92,7 +92,7 @@ func TestEverythingHandlesBadRequest(t *testing.T) {
 	endpoints := getEndpointsDefinitions()
 	body := `{"error":"not found / bad token"}`
 	for _, endpoint := range endpoints {
-		url := fmt.Sprintf("%s%s","https://api.pushy.me", endpoint.url)		
+		url := fmt.Sprintf("%s%s", "https://api.pushy.me", endpoint.url)
 		httpmock.RegisterResponder(endpoint.method, url, httpmock.NewStringResponder(http.StatusBadRequest, body))
 	}
 	sdk := pushy.Create(apiToken, pushy.GetDefaultAPIEndpoint())
@@ -142,7 +142,7 @@ func TestEverythingHandlesNetworkError(t *testing.T) {
 	deviceToken := "DEVICE"
 	endpoints := getEndpointsDefinitions()
 	for _, endpoint := range endpoints {
-		url := fmt.Sprintf("%s%s","https://api.pushy.me", endpoint.url)
+		url := fmt.Sprintf("%s%s", "https://api.pushy.me", endpoint.url)
 		httpmock.RegisterResponder(endpoint.method, url, httpmock.NewErrorResponder(errors.New("ERR CONN RESET")))
 	}
 	sdk := pushy.Create(apiToken, pushy.GetDefaultAPIEndpoint())

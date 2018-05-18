@@ -53,8 +53,8 @@ type DeviceInfo struct {
 
 // Notification is a basic representation of a notification
 type Notification struct {
-	ID      string `json:"id"`
-	Date    int    `json:"date"`
+	ID      string      `json:"id"`
+	Date    int         `json:"date"`
 	Payload interface{} `json:"payload"`
 }
 

@@ -5,7 +5,6 @@ package pushy
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -128,7 +127,7 @@ func get(client IHTTPClient, url string, positiveResponse interface{}, errRespon
 	if response.StatusCode >= 400 {
 		positiveResponse = nil
 		json.NewDecoder(body).Decode(&errResponse)
-		return errors.New(fmt.Sprintf("%d %s", response.StatusCode, response.Status))
+		return fmt.Errorf("%d %s", response.StatusCode, response.Status)
 	}
 	// decode positiveResponse
 	errResponse = nil
@@ -146,7 +145,7 @@ func post(client IHTTPClient, url string, body interface{}, posRes interface{}, 
 	b := response.Body
 	if response.StatusCode >= 400 {
 		json.NewDecoder(b).Decode(&errRes)
-		return errors.New(fmt.Sprintf("%d %s", response.StatusCode, response.Status))
+		return fmt.Errorf("%d %s", response.StatusCode, response.Status)
 	}
 	return json.NewDecoder(b).Decode(posRes)
 }
@@ -164,7 +163,7 @@ func del(client IHTTPClient, url string, posRes interface{}, errRes interface{})
 	b := response.Body
 	if response.StatusCode >= 400 {
 		json.NewDecoder(b).Decode(&errRes)
-		return errors.New(fmt.Sprintf("%d %s", response.StatusCode, response.Status))
+		return fmt.Errorf("%d %s", response.StatusCode, response.Status)
 	}
 	return json.NewDecoder(b).Decode(posRes)
 }
