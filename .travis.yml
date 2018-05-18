@@ -10,7 +10,7 @@ before_install:
   - go get -u golang.org/x/lint/golint
   - dep ensure
 script:
-  - go lint -set_exit_status
+  - golint -set_exit_status
   - go vet
   - go test -race -coverprofile=profile.out -covermode=atomic
   - cat profile.out >> coverage.txt
