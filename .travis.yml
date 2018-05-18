@@ -12,12 +12,9 @@ before_install:
 jobs:
   include:
     - stage: code_style
-    - script: golint -set_exit_status
-    - script: go vet
+    - script: golint -set_exit_status && go vet
     - stage: test
-    - script: go test -race -coverprofile=profile.out -covermode=atomic
-    - script: cat profile.out >> coverage.txt
-    - script: rm profile.out
+    - script: go test -race -coverprofile=profile.out -covermode=atomic && cat profile.out >> coverage.txt && rm profile.out
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
