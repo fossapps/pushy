@@ -7,8 +7,11 @@ go:
   - tip
 before_install:
   - go get -u github.com/golang/dep/cmd/dep
+  - go get -u golang.org/x/lint/golint
   - dep ensure
 script:
+  - go lint -set_exit_status
+  - go vet
   - go test -race -coverprofile=profile.out -covermode=atomic
   - cat profile.out >> coverage.txt
   - rm profile.out

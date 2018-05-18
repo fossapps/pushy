@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cyberhck/pushy"
+	"github.com/fossapps/pushy"
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/jarcoal/httpmock.v1"
 )

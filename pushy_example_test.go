@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/cyberhck/pushy"
 	"gopkg.in/jarcoal/httpmock.v1"
+	"github.com/fossapps/pushy"
 )
 
 func ExampleGetDefaultAPIEndpoint() {
