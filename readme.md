@@ -1,7 +1,7 @@
 ### Pushy.me strongly typed SDK for golang
 <p align="center"><img src="./.github/gopher.png" width="200" /></p>
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/fossapps/pushy)](https://goreportcard.com/report/github.com/fossapps/pushy)[![Build Status](https://travis-ci.org/fossapps/pushy.svg?branch=master)](https://travis-ci.org/fossapps/pushy)[![codecov](https://codecov.io/gh/fossapps/pushy/branch/master/graph/badge.svg)](https://codecov.io/gh/fossapps/pushy)[![](https://godoc.org/github.com/fossapps/pushy?status.svg)](http://godoc.org/github.com/fossapps/pushy)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fossapps/pushy)](https://goreportcard.com/report/github.com/fossapps/pushy)[![Build Status](https://travis-ci.com/fossapps/pushy.svg?branch=master)](https://travis-ci.com/fossapps/pushy)[![codecov](https://codecov.io/gh/fossapps/pushy/branch/master/graph/badge.svg)](https://codecov.io/gh/fossapps/pushy)[![](https://godoc.org/github.com/fossapps/pushy?status.svg)](http://godoc.org/github.com/fossapps/pushy)
 
 Visit godoc for documentation
 
