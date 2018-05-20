@@ -11,7 +11,7 @@ To begin contributing:
 
 Get the code
 
-    go get github.com/cyberhck/pushy
+    go get github.com/fossapps/pushy
 
 Get dependencies:
 
