@@ -27,7 +27,7 @@ Make your change. Add tests for your change. Make the tests & lint pass:
 
 Push to your fork and [submit a pull request][pr].
 
-[pr]: https://github.com/cyberhck/pushy/compare/
+[pr]: https://github.com/fossapps/pushy/compare/
 
 At this point you're waiting on me. I'll try to respond as soon as I can.
 
