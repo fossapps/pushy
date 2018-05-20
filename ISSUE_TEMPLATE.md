@@ -16,7 +16,7 @@ I was trying to ...
 #### Steps to reproduce
 <!-- Briefly explain what lead you to create this issue in steps. We've added an example for you, just edit the following -->
 
-- Got the sdk `go get github.com/cyberhck/pushy`
+- Got the sdk `go get github.com/fossapps/pushy`
 - Tried to `sdk :== pushy.Create(...)`
 - Compiled
 
