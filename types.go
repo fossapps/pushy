@@ -93,12 +93,12 @@ type DeviceSubscriptionRequest struct {
 
 // SendNotificationRequest is representation of data to be sent to pushy service to create new notification
 type SendNotificationRequest struct {
-	To                  []string        `json:"to"`
-	Data                string          `json:"data"`
-	TimeToLive          int             `json:"time_to_live"`
-	IOSMutableContent   bool            `json:"mutable_content"`
-	IOSContentAvailable bool            `json:"content_available"`
-	IOSNotification     IOSNotification `json:"notification"`
+	To                  []string               `json:"to"`
+	Data                map[string]interface{} `json:"data"`
+	TimeToLive          int                    `json:"time_to_live"`
+	IOSMutableContent   bool                   `json:"mutable_content"`
+	IOSContentAvailable bool                   `json:"content_available"`
+	IOSNotification     *IOSNotification       `json:"notification"`
 }
 
 // IOSNotification is a basic data for notification for iOS devices
