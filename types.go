@@ -28,6 +28,7 @@ type Pushy struct {
 
 // Error are simple error responses returned from pushy if request isn't valid
 type Error struct {
+	Code  string `json:"code"`
 	Error string `json:"error"`
 }
 
@@ -93,12 +94,12 @@ type DeviceSubscriptionRequest struct {
 
 // SendNotificationRequest is representation of data to be sent to pushy service to create new notification
 type SendNotificationRequest struct {
-	To                  []string        `json:"to"`
-	Data                string          `json:"data"`
-	TimeToLive          int             `json:"time_to_live"`
-	IOSMutableContent   bool            `json:"mutable_content"`
-	IOSContentAvailable bool            `json:"content_available"`
-	IOSNotification     IOSNotification `json:"notification"`
+	To                  []string               `json:"to"`
+	Data                map[string]interface{} `json:"data"`
+	TimeToLive          int                    `json:"time_to_live"`
+	IOSMutableContent   bool                   `json:"mutable_content"`
+	IOSContentAvailable bool                   `json:"content_available"`
+	IOSNotification     *IOSNotification       `json:"notification"`
 }
 
 // IOSNotification is a basic data for notification for iOS devices
@@ -133,3 +134,14 @@ type IHTTPClient interface {
 	Post(string, string, io.Reader) (*http.Response, error)
 	Do(*http.Request) (*http.Response, error)
 }
+
+const (
+	ErrInvalidParam        = "INVALID_PARAM"
+	ErrInvalidAuthKey      = "INVALID_API_KEY"
+	ErrAuthLimitExcceded   = "AUTH_LIMIT_EXCEEDED"
+	ErrAccountSuspended    = "ACCOUNT_SUSPENDED"
+	ErrRateLimitExceeded   = "RATE_LIMIT_EXCEEDED"
+	ErrInternalServerError = "INTERNAL_SERVER_ERROR"
+	ErrNoRecipents         = "NO_RECIPIENTS"
+	ErrNoApnAuth           = "NO_APNS_AUTH"
+)
