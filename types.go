@@ -136,10 +136,10 @@ type IHTTPClient interface {
 }
 
 const (
-	ErrInvalidParam = "INVALID_PARAM"
-	ErrInvalidParam = "INVALID_API_KEY"
-	ErrInvalidParam = "AUTH_LIMIT_EXCEEDED"
-	ErrInvalidParam = "ACCOUNT_SUSPENDED"
-	ErrInvalidParam = "RATE_LIMIT_EXCEEDED"
-	ErrInvalidParam = "INTERNAL_SERVER_ERROR"
+	ErrInvalidParam        = "INVALID_PARAM"
+	ErrInvalidAuthKey      = "INVALID_API_KEY"
+	ErrAuthLimitExcceded   = "AUTH_LIMIT_EXCEEDED"
+	ErrAccountSuspended    = "ACCOUNT_SUSPENDED"
+	ErrRateLimitExceeded   = "RATE_LIMIT_EXCEEDED"
+	ErrInternalServerError = "INTERNAL_SERVER_ERROR"
 )
