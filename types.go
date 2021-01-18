@@ -142,4 +142,6 @@ const (
 	ErrAccountSuspended    = "ACCOUNT_SUSPENDED"
 	ErrRateLimitExceeded   = "RATE_LIMIT_EXCEEDED"
 	ErrInternalServerError = "INTERNAL_SERVER_ERROR"
+	ErrNoRecipents         = "NO_RECIPIENTS"
+	ErrNoApnAuth           = "NO_APNS_AUTH"
 )
