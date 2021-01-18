@@ -28,6 +28,7 @@ type Pushy struct {
 
 // Error are simple error responses returned from pushy if request isn't valid
 type Error struct {
+	Code  string `json:"code"`
 	Error string `json:"error"`
 }
 
@@ -133,3 +134,12 @@ type IHTTPClient interface {
 	Post(string, string, io.Reader) (*http.Response, error)
 	Do(*http.Request) (*http.Response, error)
 }
+
+const (
+	ErrInvalidParam = "INVALID_PARAM"
+	ErrInvalidParam = "INVALID_API_KEY"
+	ErrInvalidParam = "AUTH_LIMIT_EXCEEDED"
+	ErrInvalidParam = "ACCOUNT_SUSPENDED"
+	ErrInvalidParam = "RATE_LIMIT_EXCEEDED"
+	ErrInvalidParam = "INTERNAL_SERVER_ERROR"
+)
